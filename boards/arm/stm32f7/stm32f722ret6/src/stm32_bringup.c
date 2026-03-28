@@ -253,6 +253,8 @@ int stm32_bringup(void)
         {
           syslog(LOG_ERR, "ERROR: Failed to register I2C%d driver: %d\n",
                  i2c_bus, ret);
+
+        while(1);
         }
 #endif
 
@@ -270,7 +272,9 @@ int stm32_bringup(void)
         }
 #endif
 #ifdef CONFIG_EXAMPLES_BMP280
-        bmp280_register(0, i2c);
+    ret = bmp280_register(0, i2c);
+    if(ret < 0)
+        while(1);
 
 #endif
     }
@@ -289,3 +293,4 @@ void board_timerhook(void)
   (void)sem_post(&g_waitsem);
 }
 #endif
+
