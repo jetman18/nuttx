@@ -1,25 +1,3 @@
-/****************************************************************************
- * boards/arm/stm32f7/nucleo-f722ze/include/board.h
- *
- * SPDX-License-Identifier: Apache-2.0
- *
- * Licensed to the Apache Software Foundation (ASF) under one or more
- * contributor license agreements.  See the NOTICE file distributed with
- * this work for additional information regarding copyright ownership.  The
- * ASF licenses this file to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance with the
- * License.  You may obtain a copy of the License at
- *
- *   http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
- * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.  See the
- * License for the specific language governing permissions and limitations
- * under the License.
- *
- ****************************************************************************/
-
 #ifndef __BOARDS_ARM_STM32F7_NUCLEO_F722RE_INCLUDE_BOARD_H
 #define __BOARDS_ARM_STM32F7_NUCLEO_F722RE_INCLUDE_BOARD_H
 
@@ -41,7 +19,7 @@
 
 /* Clocking *****************************************************************/
 
-/* The Nucleo-f722ze  board provides the following clock sources:
+/* The STM32F722RET6  board provides the following clock sources:
  *
  *   MCO: 8 MHz from MCO output of ST-LINK is used as input clock
  *   X2:  32.768 KHz crystal for LSE
@@ -329,27 +307,6 @@
 #define ADC2_DMA_CHAN DMAMAP_ADC2_1
 #define ADC3_DMA_CHAN DMAMAP_ADC3_1
 
-/* Alternate function pin selections ****************************************/
-
-/* ADC1 */
-
-#define GPIO_ADC1_IN0   GPIO_ADC1_IN0_0   /* PA0 */
-#define GPIO_ADC1_IN1   GPIO_ADC1_IN1_0   /* PA1 */
-#define GPIO_ADC1_IN2   GPIO_ADC1_IN2_0   /* PA2 */
-#define GPIO_ADC1_IN3   GPIO_ADC1_IN3_0   /* PA3 */
-#define GPIO_ADC1_IN4   GPIO_ADC1_IN4_0   /* PA4 */
-#define GPIO_ADC1_IN5   GPIO_ADC1_IN5_0   /* PA5 */
-#define GPIO_ADC1_IN6   GPIO_ADC1_IN6_0   /* PA6 */
-#define GPIO_ADC1_IN7   GPIO_ADC1_IN7_0   /* PA7 */
-#define GPIO_ADC1_IN8   GPIO_ADC1_IN8_0   /* PB0 */
-#define GPIO_ADC1_IN9   GPIO_ADC1_IN9_0   /* PB1 */
-#define GPIO_ADC1_IN10  GPIO_ADC1_IN10_0  /* PC0 */
-#define GPIO_ADC1_IN11  GPIO_ADC1_IN11_0  /* PC1 */
-#define GPIO_ADC1_IN12  GPIO_ADC1_IN12_0  /* PC2 */
-#define GPIO_ADC1_IN13  GPIO_ADC1_IN13_0  /* PC3 */
-#define GPIO_ADC1_IN14  GPIO_ADC1_IN14_0  /* PC4 */
-#define GPIO_ADC1_IN15  GPIO_ADC1_IN15_0  /* PC5 */
-
 /* TIM */
 
 /* Quadrature encoder
@@ -446,125 +403,7 @@
 
 #endif
 
-/* USART8:
- *
- * This configurations assume that you are connecting to the Morpho connector
- * with the serial interface with the adaptor's RX on pin CN11 pin 64 and
- * TX on pin CN11 pin 61
- *
- * USART8: has no remap
- */
-
-/* SPI
- *
- *
- *  PA6   SPI1_MISO CN12-13
- *  PA7   SPI1_MOSI CN12-15
- *  PA5   SPI1_SCK  CN12-11
- *
- *  PB14  SPI2_MISO CN12-28
- *  PB15  SPI2_MOSI CN12-26
- *  PB13  SPI2_SCK  CN12-30
- *
- *  PB4   SPI3_MISO CN12-27
- *  PB5   SPI3_MOSI CN12-29
- *  PB3   SPI3_SCK  CN12-31
- */
-
-#define GPIO_SPI1_MISO   (GPIO_SPI1_MISO_1|GPIO_SPEED_50MHz)
-#define GPIO_SPI1_MOSI   (GPIO_SPI1_MOSI_1|GPIO_SPEED_50MHz)
-#define GPIO_SPI1_SCK    (GPIO_SPI1_SCK_1|GPIO_SPEED_50MHz)
-
-#define GPIO_SPI2_MISO   (GPIO_SPI2_MISO_1|GPIO_SPEED_50MHz)
-#define GPIO_SPI2_MOSI   (GPIO_SPI2_MOSI_1|GPIO_SPEED_50MHz)
-#define GPIO_SPI2_SCK    (GPIO_SPI2_SCK_3|GPIO_SPEED_50MHz)
-
-#define GPIO_SPI3_MISO   (GPIO_SPI3_MISO_1|GPIO_SPEED_50MHz)
-#define GPIO_SPI3_MOSI   (GPIO_SPI3_MOSI_2|GPIO_SPEED_50MHz)
-#define GPIO_SPI3_SCK    (GPIO_SPI3_SCK_1|GPIO_SPEED_50MHz)
-
-/* I2C
- *
- *
- *  PB8   I2C1_SCL CN12-3
- *  PB9   I2C1_SDA CN12-5
-
- *  PB10   I2C2_SCL CN11-51
- *  PB11 I2C2_SDA CN12-18
- *
- *  PA8   I2C3_SCL CN12-23
- *  PC9   I2C3_SDA CN12-1
- *
- */
-
 #define GPIO_I2C1_SCL (GPIO_I2C1_SCL_2|GPIO_SPEED_50MHz)
 #define GPIO_I2C1_SDA (GPIO_I2C1_SDA_2|GPIO_SPEED_50MHz)
-
-#define GPIO_I2C2_SCL (GPIO_I2C2_SCL_1|GPIO_SPEED_50MHz)
-#define GPIO_I2C2_SDA (GPIO_I2C2_SDA_1|GPIO_SPEED_50MHz)
-
-#define GPIO_I2C3_SCL (GPIO_I2C3_SCL_1|GPIO_SPEED_50MHz)
-#define GPIO_I2C3_SDA (GPIO_I2C3_SDA_1|GPIO_SPEED_50MHz)
-
-/* The STM32 F7 connects to a SMSC LAN8742A PHY using these pins:
- *
- *   STM32 F7 BOARD        LAN8742A
- *   GPIO     SIGNAL       PIN NAME
- *   -------- ------------ -------------
- *   PG11     RMII_TX_EN   TXEN
- *   PG13     RMII_TXD0    TXD0
- *   PB13     RMII_TXD1    TXD1
- *   PC4      RMII_RXD0    RXD0/MODE0
- *   PC5      RMII_RXD1    RXD1/MODE1
- *   PG2      RMII_RXER    RXER/PHYAD0 -- Not used
- *   PA7      RMII_CRS_DV  CRS_DV/MODE2
- *   PC1      RMII_MDC     MDC
- *   PA2      RMII_MDIO    MDIO
- *   N/A      NRST         nRST
- *   PA1      RMII_REF_CLK nINT/REFCLK0
- *   N/A      OSC_25M      XTAL1/CLKIN
- *
- * The PHY address is either 0 or 1, depending on the state of PG2 on reset.
- * PG2 is not controlled but appears to result in a PHY address of 0.
- */
-
-#define GPIO_ETH_MDC          (GPIO_ETH_MDC_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_MDIO         (GPIO_ETH_MDIO_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_CRS_DV  (GPIO_ETH_RMII_CRS_DV_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_REF_CLK (GPIO_ETH_RMII_REF_CLK_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_RXD0    (GPIO_ETH_RMII_RXD0_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_RXD1    (GPIO_ETH_RMII_RXD1_0|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_TX_EN   (GPIO_ETH_RMII_TX_EN_2|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_TXD0    (GPIO_ETH_RMII_TXD0_2|GPIO_SPEED_100MHz)
-#define GPIO_ETH_RMII_TXD1    (GPIO_ETH_RMII_TXD1_1|GPIO_SPEED_100MHz)
-
-/* CAN Bus  */
-
-#ifdef CONFIG_NUCLEO_F722ZE_CAN1_MAP_PD0PD1
-#  define GPIO_CAN1_TX  (GPIO_CAN1_TX_3|GPIO_SPEED_50MHz) /* PD1 */
-#  define GPIO_CAN1_RX  (GPIO_CAN1_RX_3|GPIO_SPEED_50MHz) /* PD0 */
-#elif CONFIG_NUCLEO_F722ZE_CAN1_MAP_D14D15
-#  define GPIO_CAN1_TX  (GPIO_CAN1_TX_2|GPIO_SPEED_50MHz) /* PB9 */
-#  define GPIO_CAN1_RX  (GPIO_CAN1_RX_2|GPIO_SPEED_50MHz) /* PB8 */
-#endif
-
-/* SDMMC2 */
-
-#define GPIO_SDMMC2_CK  (GPIO_SDMMC2_CK_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_CMD (GPIO_SDMMC2_CMD_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D0  (GPIO_SDMMC2_D0_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D1  (GPIO_SDMMC2_D1_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D2  (GPIO_SDMMC2_D2_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D3  (GPIO_SDMMC2_D3_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D4  (GPIO_SDMMC2_D4_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D5  (GPIO_SDMMC2_D5_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D6  (GPIO_SDMMC2_D6_0|GPIO_SPEED_50MHz)
-#define GPIO_SDMMC2_D7  (GPIO_SDMMC2_D7_0|GPIO_SPEED_50MHz)
-
-/* OTGFS */
-
-#define GPIO_OTGFS_DM  (GPIO_OTGFS_DM_0|GPIO_SPEED_100MHz)
-#define GPIO_OTGFS_DP  (GPIO_OTGFS_DP_0|GPIO_SPEED_100MHz)
-#define GPIO_OTGFS_ID  (GPIO_OTGFS_ID_0|GPIO_SPEED_100MHz)
 
 #endif /* __BOARDS_ARM_STM32F7_NUCLEO_F722ZE_INCLUDE_BOARD_H */

@@ -37,7 +37,7 @@
 #include <nuttx/kmalloc.h>
 #include <nuttx/leds/userled.h>
 #include <nuttx/sensors/mpu60x0.h>
-
+#include <nuttx/sensors/bmp280.h>
 #include "stm32_i2c.h"
 
 
@@ -78,6 +78,7 @@ int stm32_bringup(void)
 #ifdef CONFIG_I2C
   int i2c_bus;
   struct i2c_master_s *i2c;
+
 #ifdef CONFIG_MPU60X0_I2C
   struct mpu_config_s *mpu_config;
 #endif
@@ -267,6 +268,10 @@ int stm32_bringup(void)
           mpu_config->addr = 0x68;
           mpu60x0_register("/dev/imu0", mpu_config);
         }
+#endif
+#ifdef CONFIG_EXAMPLES_BMP280
+        bmp280_register(0, i2c);
+
 #endif
     }
 #endif
